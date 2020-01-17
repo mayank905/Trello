@@ -1,0 +1,43 @@
+body{
+    background-color: aquamarine;
+}
+header{
+    display: flex;
+    justify-content: center;
+}
+.listContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+.list1container,.list2container,.list3container,.list4container,.ListContainer{
+    display:flex;
+    justify-content:center;
+    align-items: start;
+    background-color: grey;
+    max-width:250px;
+    min-width: 120px;
+}
+.list2,.list1,.list3,.list4{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    background-color: red;
+    padding: 2px;
+    min-width: 120px;
+
+}
+.list1 div,.list2 div,.list3 div,.list4 div{
+    display:flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background-color: white;
+    min-width: 40px;
+    min-height: 50px;
+}
+.buttonelement{
+    min-width:40px;
+    max-height:30px;
+}
+.editDel{
+
+}
