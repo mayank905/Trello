@@ -13,11 +13,11 @@ header{
     display:flex;
     justify-content:center;
     align-items: start;
-    background-color: grey;
+    /*background-color: grey;*/
     max-width:250px;
     min-width: 120px;
 }
-.list2,.list1,.list3,.list4{
+.list2,.list1,.list3,.list4,.smalllist{
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 5px;
@@ -26,7 +26,7 @@ header{
     min-width: 120px;
 
 }
-.list1 div,.list2 div,.list3 div,.list4 div{
+.list1 div,.list2 div,.list3 div,.list4 div,.smalllist div{
     display:flex;
     justify-content:space-evenly;
     align-items: center;

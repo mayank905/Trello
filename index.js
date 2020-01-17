@@ -60,6 +60,7 @@ async function refereshList(result1){
             listcontainer.className='ListContainer';
             eachlist=document.createElement('div');
             eachlist.className='list'+itemno;
+            eachlist.className='smalllist';
             eachlist.setAttribute('listId',listContent.id)
             eachlist.listId=listContent.id
             eachlist.appendChild(document.createTextNode(listContent.name+''));
@@ -89,12 +90,14 @@ async function refereshList(result1){
 
             }catch (e) {console.log('problem in getting cards')}
             listcontainer.appendChild(eachlist);
-            AddAnotherList = document.createElement('input');
-            AddAnotherList.type='submit'
-            AddAnotherList.className = 'buttonelement';
-            AddAnotherList.value='Add Another List'
+
             listContainer.appendChild(listcontainer);
         }
+        AddAnotherList = document.createElement('input');
+        AddAnotherList.type='button'
+        AddAnotherList.className = 'buttonelement';
+        AddAnotherList.value='Add Another List'
+        AddAnotherList.addEventListener('click',addList)
         listContainer.appendChild(AddAnotherList)
 
     }catch (e) {console.log('problem in creating list dynamically')}
@@ -177,4 +180,32 @@ async function addCard(e,id1){
     e.target.style.visibility = 'hidden';
     e.target.parentNode.appendChild(dummyCard)
 
+}
+
+async function addList(e){
+    let dummyCard=document.createElement('div')
+    let dummyText=document.createElement('input')
+    dummyText.type='text';
+    let dummyAddButton=document.createElement('input')
+    dummyAddButton.type='button'
+    dummyAddButton.value='ADD'
+    dummyAddButton.addEventListener('click',async function(e){e.preventDefault();
+        let name1=e.target.previousSibling.value;
+        e.stopPropagation();
+        let listUrl='https://api.trello.com/1/lists?name='+name1+'&idBoard='+boardId+'&pos=bottom&key='+Key+'&token='+Token;
+        const resp = await fetch(listUrl, { method: 'POST' });
+        if (resp.ok){
+            console.log("adding_List_Worked")
+        }
+        refreshPage();})
+    let cancelAddButton=document.createElement('input')
+    cancelAddButton.type='button'
+    cancelAddButton.value='X'
+    cancelAddButton.addEventListener('click',refreshPage)
+    dummyCard.appendChild(dummyText);
+    dummyCard.appendChild(dummyAddButton);
+    dummyCard.appendChild(cancelAddButton);
+    // e.target.appendChild(dummyCard)
+    e.target.style.visibility = 'hidden';
+    e.target.parentNode.appendChild(dummyCard)
 }
